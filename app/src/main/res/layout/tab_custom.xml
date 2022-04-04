@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/textTabCustom"
+    android:layout_width="100dp"
+    android:layout_height="42dp"
+    android:background="@drawable/tab_selector"
+    android:elevation="15dp"
+    android:fontFamily="@string/font_family_medium"
+    android:gravity="center"
+    android:letterSpacing="0.01"
+    android:text="@string/pizza"
+    android:textAllCaps="false"
+    android:textColor="@color/tab_color"
+    android:textSize="13sp"
+    app:cornerRadius="6dp">
+</TextView>
