@@ -1,4 +1,4 @@
-package com.hammersys.customtab.network
+package com.example.customtab.network
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -23,7 +23,6 @@ object Networking {
         .addConverterFactory(MoshiConverterFactory.create())
         .client(okhttpClient)
         .build()
-
 
     val api: Api
         get() = retrofit.create()

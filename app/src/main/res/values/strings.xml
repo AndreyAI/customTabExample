@@ -17,5 +17,8 @@
     <string name="sometext">sometext</string>
     <string name="_345">от 345 р</string>
     <string name="click">Click!</string>
+    <string name="director">Director</string>
+    <string name="actors">Actors</string>
+    <string name="error">Ошибка!</string>
 
 </resources>

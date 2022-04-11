@@ -1,13 +1,14 @@
-package com.hammersys.customtab.network
+package com.example.customtab.network
 
 import okhttp3.Interceptor
 import okhttp3.Response
 
 class CustomHeaderInterceptor : Interceptor {
+
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
 
-        val modifiedUrl = originalRequest.url.newBuilder()//newBuilder()
+        val modifiedUrl = originalRequest.url.newBuilder()
             .addQueryParameter("apikey", API_KEY)
             .build()
 

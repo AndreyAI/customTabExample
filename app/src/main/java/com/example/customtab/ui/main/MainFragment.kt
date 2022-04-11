@@ -1,28 +1,32 @@
-package com.example.customtab
+package com.example.customtab.ui.main
 
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.customtab.R
 import com.example.customtab.banner.BannerAdapter
 import com.example.customtab.data.Banner
-import com.example.customtab.databinding.ActivityMainBinding
+import com.example.customtab.databinding.FragmentMainBinding
 import com.example.customtab.food.FoodAdapter
 import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
-class MainActivity : AppCompatActivity() {
+class MainFragment : Fragment(R.layout.fragment_main) {
 
-    private val binding by viewBinding(ActivityMainBinding::bind)
+    private val binding by viewBinding(FragmentMainBinding::bind)
     private var bannerAdapter: BannerAdapter? = null
     private val viewModel: ViewModelMain by viewModels()
     private var foodAdapter: FoodAdapter? = null
 
+    //Banners hardcoded in demo. Required API.
     private val banners = listOf(
         Banner(
             0,
@@ -38,14 +42,11 @@ class MainActivity : AppCompatActivity() {
         )
     )
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initBanners()
         initTabs()
         initFood()
-
     }
 
     private fun initTabs() {
@@ -69,6 +70,7 @@ class MainActivity : AppCompatActivity() {
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
+                Timber.d("TEST")
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
@@ -95,6 +97,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun initFood() {
         foodAdapter = FoodAdapter {
+            findNavController().navigate(
+                MainFragmentDirections.actionMainFragmentToFoodDetailFragment(
+                    it.id
+                )
+            )
         }
 
         foodAdapter?.addLoadStateListener { state ->
@@ -122,5 +129,4 @@ class MainActivity : AppCompatActivity() {
         foodAdapter = null
         super.onDestroy()
     }
-
 }

@@ -1,4 +1,4 @@
-package com.example.customtab
+package com.example.customtab.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,8 +11,6 @@ import kotlinx.coroutines.flow.Flow
 class ViewModelMain : ViewModel() {
 
     private val repository = Repository()
-
     val pagingDataFlow: Flow<PagingData<Food>> = repository.getFood()
         .cachedIn(viewModelScope)
-
 }

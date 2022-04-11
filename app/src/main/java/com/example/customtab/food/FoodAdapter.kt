@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.customtab.R
 import com.example.customtab.data.Food
 import com.example.customtab.databinding.ItemFoodBinding
+import timber.log.Timber
 
 class FoodAdapter(
     private val onDetailFood: (Food) -> Unit
@@ -17,6 +18,7 @@ class FoodAdapter(
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val item = getItem(position)
+        Timber.d(position.toString())
         holder.bind(item)
     }
 
