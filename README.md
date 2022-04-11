@@ -5,3 +5,4 @@ Example App with custom scrollable tab.
 - Implemented caching of data in the database (used Room).
 
 <img src="screen_main.png" data-canonical-src="screen_main.png" width="200" height="400" />
+<img src="screen_detail.png" data-canonical-src="screen_detail.png" width="200" height="400" />
