@@ -12,6 +12,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.customtab.R
 import com.example.customtab.banner.BannerAdapter
 import com.example.customtab.data.Banner
+import com.example.customtab.data.Repository
 import com.example.customtab.databinding.FragmentMainBinding
 import com.example.customtab.food.FoodAdapter
 import com.google.android.material.tabs.TabLayout
@@ -23,7 +24,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private val binding by viewBinding(FragmentMainBinding::bind)
     private var bannerAdapter: BannerAdapter? = null
-    private val viewModel: ViewModelMain by viewModels()
+    private val viewModel: ViewModelMain by viewModels() {
+        ViewModelMain.MainFactory(repository = Repository())
+    }
     private var foodAdapter: FoodAdapter? = null
 
     //Banners hardcoded in demo. Required API.

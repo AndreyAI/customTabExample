@@ -10,13 +10,18 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.example.customtab.R
 import com.example.customtab.data.FoodDetail
+import com.example.customtab.data.Repository
 import com.example.customtab.databinding.FragmentFoodBinding
 
 class FoodDetailFragment : Fragment(R.layout.fragment_food) {
 
     private val args: FoodDetailFragmentArgs by navArgs()
     private val binding by viewBinding(FragmentFoodBinding::bind)
-    private val viewModel: ViewModelFoodDetail by viewModels()
+    private val viewModel: ViewModelFoodDetail by viewModels() {
+        ViewModelFoodDetail.DetailFactory(
+            repository = Repository()
+        )
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
